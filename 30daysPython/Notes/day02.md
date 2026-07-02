@@ -21,11 +21,11 @@ A simple **Student Profile Generator** that stores personal information using di
 
 ## Concepts Learned
 
-- Creating variables
+- Creating variables.
 - Understanding Python data types.
-- Printing formatted output
-- Checking data types using type()
-- Converting one data type into another
+- Printing formatted output.
+- Checking data types using type().
+- Converting one data type into another.
 
 ## Key Takeaway
 
