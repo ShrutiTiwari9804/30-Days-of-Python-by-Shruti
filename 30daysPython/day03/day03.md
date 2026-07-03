@@ -26,11 +26,11 @@ This project is a simple command-line application that collects user information
 
 
 ## Features
-- Takes user details as input
-- Calculate BMI
-- Displays formatted profile 
-- Shows Python data types
-- Demonstrates type conversion
+- Takes user details as input.
+- Calculate BMI.
+- Displays formatted profile.
+- Shows Python data types.
+- Demonstrates type conversion.
 
 ## What I Learned
 
