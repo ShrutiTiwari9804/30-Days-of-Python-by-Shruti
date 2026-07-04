@@ -49,7 +49,7 @@ def display_report(student):
     print(f"Name     : {student['name']}")
     print(f"Roll No. : {student['roll']}")
 
-    print("\nSubject-wisw Marks")
+    print("\nSubject-wise Marks")
     print("-" * 40)
 
 
