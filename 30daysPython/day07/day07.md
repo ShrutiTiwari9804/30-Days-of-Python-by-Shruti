@@ -1,6 +1,6 @@
-# 💰 Expense Tracker (Day 07)
+#  Expense Tracker (Day 07)
 
-## 📌 Project Overview
+##  Project Overview
 
 Expense Tracker is a simple command-line Python application that helps users record and manage daily expenses.
 
@@ -8,7 +8,7 @@ The application stores expense records in a text file so that data remains avail
 
 ---
 
-## ✨ Features
+##  Features
 
 - Add new expenses
 - View all expenses
@@ -20,7 +20,7 @@ The application stores expense records in a text file so that data remains avail
 
 ---
 
-## 🛠 Technologies Used
+##  Technologies Used
 
 - Python 3
 - File Handling
@@ -31,7 +31,7 @@ The application stores expense records in a text file so that data remains avail
 
 ---
 
-## 📂 Folder Structure
+##  Folder Structure
 
 Day07
 
@@ -43,7 +43,7 @@ day07.md
 
 ---
 
-## ▶️ How to Run
+##  How to Run
 
 Open the project folder in VS Code.
 
@@ -53,7 +53,7 @@ python day07.py
 
 ---
 
-## 📸 Sample Categories
+##  Sample Categories
 
 - Food
 - Shopping
@@ -65,7 +65,7 @@ python day07.py
 
 ---
 
-## 🎯 Learning Outcomes
+##  Learning Outcomes
 
 After completing this project, you'll understand:
 
@@ -77,7 +77,7 @@ After completing this project, you'll understand:
 
 ---
 
-## 🚀 Future Improvements
+##  Future Improvements
 
 - Delete expense
 - Edit expense
