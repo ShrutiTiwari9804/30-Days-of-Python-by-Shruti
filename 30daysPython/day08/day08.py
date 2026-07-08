@@ -103,4 +103,40 @@ def main():
     contacts = load_contacts()
 
     while True:
-        p
+        print("""
+========== Contact Book =========== )
+1. Add Contact
+2. View Contact
+3. Search Contact
+4. Update Contact
+5. Delete Contact
+6. Exit
+=====================================
+""")
+        
+        choice = input("Choose: ")
+        if choice == "1":
+            add_contact(contacts)
+        
+        elif choice == "2":
+            view_contact(contacts)
+
+        elif choice == "3":
+            search_contact(contacts)
+
+        elif choice == "4":
+            update_contact(contacts)
+
+        elif choice == "5":
+            delete_contact(contacts)
+
+        elif choice == "6":
+            print("GOODBYE!")
+            break
+
+        else:
+            print("Invalid Choice")
+
+
+if __name__ == "__main__":
+    main()
