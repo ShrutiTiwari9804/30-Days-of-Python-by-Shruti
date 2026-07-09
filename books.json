@@ -1,0 +1,14 @@
+[
+    {
+        "id": "67",
+        "title": "haruki murakami",
+        "author": "haruki",
+        "issued": true
+    },
+    {
+        "id": "69",
+        "title": "well n good",
+        "author": "mathur",
+        "issued": false
+    }
+]
