@@ -1,0 +1,11 @@
+INFO: Server started successfully
+INFO: User login successful
+WARNING: Disk usage is above 80%
+ERROR: Database connection failed
+INFO: Request processed
+ERROR: Database connection failed
+WARNING: High memory usage detected
+INFO: User logged out
+ERROR: Invalid API key
+INFO: Backup completed
+ERROR: Database connection failed

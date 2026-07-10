@@ -1,0 +1,9 @@
+========= LOG ANALYSIS REPORT ========
+
+ Total logs : 11
+  INFO: 5
+ WARNING : 2
+ ERROR : 4
+ Most Common Error
+  ERROR: Database connection failed
+ Occurred : 3time(s)
