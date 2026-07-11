@@ -2,7 +2,7 @@ import os
 import shutil
 
 # Folder to organize
-folder_path = "TestFolder"
+folder_path = "30daysPython/day11/TestFolder"
 
 # Categories
 file_types = {
