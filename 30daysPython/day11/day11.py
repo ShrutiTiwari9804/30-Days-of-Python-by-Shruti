@@ -44,7 +44,7 @@ def organize_files (folder):
 
                 os.makedirs(category_folder, exist_ok=True)
 
-                shrutil.move(file_path, os.path.join(category_folder))
+                shutil.move(file_path, os.path.join(category_folder))
 
                 print(f"Moved {file} → {category}")
                 moved += 1
@@ -54,12 +54,18 @@ def organize_files (folder):
         if not moved_file:
             others = os.path.join(folder, "others")
             os.makedirs(others, exist_ok=True)
-            shrutil.move(file_path,os.path.join(others, file))
+            shutil.move(file_path,os.path.join(others, file))
             print(f"Moved {file} →  others")
             moved += 1
 
         print("\nOrganization Complete!")
         print(f"Total files moved: {moved}")
+
+
+import os
+
+print(os.getcwd())
+print(os.path.exists(folder_path))
 
 organize_files(folder_path)
 
