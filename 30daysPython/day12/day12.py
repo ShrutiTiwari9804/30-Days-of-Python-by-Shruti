@@ -1,7 +1,11 @@
 import json
 import os
 
-FILE_NAME = "movies.json"
+import os
+
+BASE_DIR = os.path.dirname(__file__)
+FILE_NAME = os.path.join(BASE_DIR, "movies.json")
+
 
 
 def load_movies():
@@ -21,7 +25,7 @@ def save_movies(movies):
 
 
 def add_movie():
-    movies = load_movies
+    movies = load_movies()
 
     title = input("Enter Movie Title: ").strip()
 
@@ -73,7 +77,7 @@ def search_movies():
 
     title = input("Enter movie title: ").strip()
 
-    for movie in Movies:
+    for movie in movies:
         if movie ["title"].lower() == title.lower():
             print("\nMovie Found\n")
             print(movie)
@@ -98,5 +102,96 @@ def update_movie ():
 
             print("Movie updated successfully.")
             return
+        
+    print ("Movie not found.")
 
-            
+
+def delete_movie():
+    movies = load_movies()
+
+    title = input("Enter movie title to delete: ").strip()
+
+    for movie in movies:
+        if movie ["title"].lower() == title.lower():
+            movies.remove(movie)
+            save_movies(movies)
+            print("Movie deleted successfully.")
+            return
+
+    print("Movie not found.")
+
+
+def mark_watched():
+    movies = load_movies()
+
+    title = input("Enter movie title: ").strip()
+
+    for movie in movies:
+        if movie ["title"].lower() == title.lower():
+            movie["watched"] = True
+            save_movies(movies)
+            print("Marked as watched.")
+            return
+        
+    print("Movie not found.")
+
+def view_watched():
+    movies = load_movies()
+
+    watched_movies = [movie for movie in movies if movie ["watched"]]
+
+    if not watched_movies:
+        print("No watched movies.")
+        return
+    
+    print("\n====== Watched Movies ======")
+
+    for movie in watched_movies:
+        print(f"{movie['title']}({movie['year']}){movie['rating']}/5")
+
+while True:
+
+    print("""
+========== Movie Collection Manager ==========
+1. Add Movie
+2.View All Movies
+3. Search Movie
+4. Update Movie
+5. Delete Movie
+6. Mark Movie as Watched
+7. View Watched Movies
+8. Exit
+          
+==============================================
+""")
+    
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        add_movie()
+
+    elif choice == "2":
+        view_movies()
+
+    elif choice == "3":
+        search_movies()
+    
+    elif choice == "4":
+        update_movie()
+
+    elif choice == "5":
+        delete_movie()
+
+    elif choice == "6":
+        mark_watched()
+
+    elif choice == "7":
+        view_watched()
+
+    elif choice == "8":
+        print("Thank You for using Movie Collection Manager!")
+        break
+    else:
+        print("Invalid choice.")
+
+

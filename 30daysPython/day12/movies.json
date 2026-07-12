@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "title": "hari",
+        "genre": "comedy",
+        "year": "1919",
+        "rating": 4,
+        "watched": false
+    }
+]
