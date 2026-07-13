@@ -90,16 +90,16 @@ def menu():
         choice = input("Enter choice:  ")
 
         if choice == "1":
-            add_account()
+            add_account(data)
 
         elif choice == "2":
-            view_accounts()
+            view_accounts(data)
         
         elif choice == "3":
-            verify_password
+            verify_password(data)
 
         elif choice == "4":
-            delete_account
+            delete_account(data)
 
         elif choice == "5":
             print("Vault Closed.")
