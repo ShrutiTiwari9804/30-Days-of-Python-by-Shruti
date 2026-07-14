@@ -100,19 +100,25 @@ def main():
         print("3. Update Quantity")
         print("4. Remove Product")
         print("5. Exit")
+
+
         choice = input("Enter choice: ")
         if choice == "1":
             cart.add_product()
+
         elif choice == "2":
             cart.update_quantity()
             
         elif choice == "3":
             cart.view_cart()
+
         elif choice == "4":
             cart.remove_product()
+
         elif choice == "5":
             print("Thankyou for shoppping!")
             break
+
         else:
             print("Invalid choice.")
 
