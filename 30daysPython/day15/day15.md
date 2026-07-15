@@ -4,7 +4,7 @@
 
 A command-line Notes Manager built using Python that allows users to create, organize, search, update, and delete notes. Notes are stored permanently using a JSON file.
 
----
+
 
 ##  Features
 
@@ -19,7 +19,7 @@ A command-line Notes Manager built using Python that allows users to create, org
 - 📂 File Handling
 - 📋 CRUD Operations
 
----
+
 
 ##  Technologies Used
 
@@ -28,31 +28,31 @@ A command-line Notes Manager built using Python that allows users to create, org
 - File Handling
 - OOP (Classes & Objects)
 
----
+
 
 ##  Project Structure
 
-```
+
 Day15_Notes_Manager/
 │
 ├── day15.py
 ├── notes.json
 └── day15.md
-```
 
----
 
-## ▶ How to Run
+
+
+##  How to Run
 
 ```bash
 python day15.py
 ```
 
----
+
 
 ##  Menu
 
-```
+
 ===== Notes Manager =====
 
 1. Add Note
@@ -62,28 +62,28 @@ python day15.py
 5. Update Note
 6. Delete Note
 7. Exit
-```
 
----
+
+
 
 ##  Example Note
 
 Title:
-```
+
 Python Revision
-```
+
 
 Content:
-```
+
 Revise File Handling and OOP concepts.
-```
+
 
 Tags:
-```
-python, study, oop
-```
 
----
+python, study, oop
+
+
+
 
 ##  Concepts Practiced
 
@@ -96,7 +96,7 @@ python, study, oop
 - Search Algorithms
 - Menu-Driven Programs
 
----
+
 
 ##  Learning Outcome
 
