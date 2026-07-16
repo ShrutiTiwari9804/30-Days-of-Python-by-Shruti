@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "name": "sofa",
+        "category": "couch",
+        "quantity": 2,
+        "price": 40000.0
+    }
+]
