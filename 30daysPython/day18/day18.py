@@ -128,6 +128,74 @@ class PersonalFinanceSystem:
         except ValueError:
             print (" please enter valid numeric values.")
 
+    
+    # DELETE
+    def delete_transaction(self):
+        transactions = self.load_transactions()
+
+        try:
+            transaction_id = int(input("Enter transaction ID to delete: "))
+
+            new_transactions = [t for t in transactions if t["id"] != transaction_id]
+
+            if len(new_transactions) == len(transactions):
+                print("❌ Transaction not found.")
+            else:
+                self.save_transactions(new_transactions)
+                print("✅ Transaction deleted successfully!")
+
+        except ValueError:
+            print("❌ Please enter a valid transaction ID.")
+
+    # REPORT
+    def generate_report(self):
+        transactions = self.load_transactions()
+
+        total_income = sum(
+            t["amount"] for t in transactions if t["type"] == "income"
+        )
+        total_expense = sum(
+            t["amount"] for t in transactions if t["type"] == "expense"
+        )
+        savings = total_income - total_expense
+
+        print("\n===== Finance Report =====")
+        print(f"Total Income : ₹{total_income}")
+        print(f"Total Expense: ₹{total_expense}")
+        print(f"Savings      : ₹{savings}")
+
+    def menu(self):
+        while True:
+            print("\n===== Personal Finance System =====")
+            print("1. Add Transaction")
+            print("2. View Transactions")
+            print("3. Update Transaction")
+            print("4. Delete Transaction")
+            print("5. Generate Report")
+            print("6. Exit")
+
+            choice = input("Enter your choice: ")
+
+            if choice == "1":
+                self.add_transaction()
+            elif choice == "2":
+                self.view_transactions()
+            elif choice == "3":
+                self.update_transaction()
+            elif choice == "4":
+                self.delete_transaction()
+            elif choice == "5":
+                self.generate_report()
+            elif choice == "6":
+                print("👋 Exiting program. Goodbye!")
+                break
+            else:
+                print("❌ Invalid choice. Please try again.")
+
+
+if __name__ == "__main__":
+    system = PersonalFinanceSystem()
+    system.menu()
 
 
 
