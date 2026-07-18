@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "type": "expense",
+        "amount": 45000.0,
+        "category": "assets",
+        "description": "car"
+    }
+]

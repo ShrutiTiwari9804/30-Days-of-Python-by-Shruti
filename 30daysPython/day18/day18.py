@@ -27,7 +27,7 @@ class PersonalFinanceSystem:
 
     def __init__(self):
         self.folder = "finance_data"
-        self.file = os.path(self.folder, "transaction.json")
+        self.file = os.path.join(self.folder, "transaction.json")
 
         # Create folder and file if they don't exist
         os.makedirs(self.folder, exist_ok = True)
@@ -78,7 +78,7 @@ class PersonalFinanceSystem:
                 description
             )
         
-            transaction.append(transaction.to_dict())
+            transactions.append(transaction.to_dict())
             self.save_transaction(transactions)
 
             print(" Transaction added successfully!")
@@ -90,7 +90,7 @@ class PersonalFinanceSystem:
     # READ
 
     def view_transactions(self):
-        transactions = self.load_transaction()
+        transactions = self.load_transactions()
 
         if not transactions:
             print(" No transactions found.")
@@ -119,7 +119,7 @@ class PersonalFinanceSystem:
                     t["category"] == input("Enter new category : ")
                     t["description"] == input("Enter new description : ")
 
-                    self.save_transactions(transactions)
+                    self.save_transaction(transactions)
                     print(" Transaction updated successesfully!")
                     return
                 
