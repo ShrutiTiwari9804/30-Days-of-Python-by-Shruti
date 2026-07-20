@@ -10,7 +10,7 @@ def load_data():
     if os.path.exists(FILE_NAME):
         with open (FILE_NAME,'r') as file:
             return json.load(file)
-        return[]
+    return[]
     
 
 def save_data(data):
@@ -57,7 +57,7 @@ class MovieTicket(Ticket):
 
     def ticket_details(self):
         return {
-            "Booking ID " : self.__booking_id,
+            "Booking ID" : self.__booking_id,
             "Customer" : self.__name,
             "Movie": self.__movie,
             "Seats": self.__seats
@@ -76,7 +76,7 @@ class BookingManager:
         booking_id = input("Booking ID: ")
 
         for bookings in self.bookings:
-            if booking ["Booking ID"] == booking_id:
+            if bookings ["Booking ID"] == booking_id:
                 print("Booking ID already Exists.")
                 return
             
@@ -145,3 +145,38 @@ class BookingManager:
             
         print("Booking Not Found.")
 
+
+# Main Program
+
+
+manager = BookingManager()
+
+while True:
+
+    print("\n ====== Ticket Booking System =======")
+    print("1. Book Ticket")
+    print("2. View Bookings")
+    print("3. Update Booking ")
+    print("4. Cancel Booking")
+    print("5. Exit")
+
+    choice = input ("Enter choice: ")
+
+    if choice == "1":
+        manager.create_booking()
+
+    elif choice == "2":
+        manager.view_bookings()
+
+    elif choice == "3":
+        manager.update_booking()
+
+    elif choice == "4":
+        manager.delete_booking()
+
+    elif choice == "5":
+        print("Thank You!")
+        break
+
+    else:
+        print("Invalid Choice")
