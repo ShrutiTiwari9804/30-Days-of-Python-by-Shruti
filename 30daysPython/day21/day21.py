@@ -4,12 +4,10 @@ from abc import ABC, abstractmethod
 
 FILE_NAME = "bookings.json"
 
-# ==========================================================
-# FILE HANDLING
-# ==========================================================
+
+# ================= FILE HANDLING =================
 
 def load_data():
-    """Load booking data from JSON file."""
     if os.path.exists(FILE_NAME):
         with open(FILE_NAME, "r") as file:
             return json.load(file)
@@ -17,85 +15,11 @@ def load_data():
 
 
 def save_data(data):
-    """Save booking data into JSON file."""
     with open(FILE_NAME, "w") as file:
         json.dump(data, file, indent=4)
 
 
-# ==========================================================
-# ABSTRACTION
-# Abstract class representing a Person
-# ==========================================================
-
-class Person(ABC):
-
-    def __init__(self, person_id, name):
-        self._person_id = person_id
-        self._name = name
-
-    @abstractmethod
-    def display(self):
-        pass
-
-
-# ==========================================================
-# INHERITANCE
-# Rider inherits Person
-# ==========================================================
-
-class Rider(Person):
-
-    def __init__(self, rider_id, name):
-        super().__init__(rider_id, name)
-
-    def display(self):
-        return {
-            "Rider ID": self._person_id,
-            "Rider Name": self._name
-        }
-
-
-# ==========================================================
-# INHERITANCE
-# Driver inherits Person
-# ==========================================================
-
-class Driver(Person):
-
-    def __init__(self, driver_id, name, cab_number):
-        super().__init__(driver_id, name)
-        self._cab_number = cab_number
-
-    def display(self):
-        return {
-            "Driver ID": self._person_id,
-            "Driver Name": self._name,
-            "Cab Number": self._cab_number
-        }
-
-
-# ==========================================================
-# ENCAPSULATION
-# Private fare attribute
-# ==========================================================
-
-class Cab:
-
-    def __init__(self, cab_number, cab_type):
-        self.__cab_number = cab_number
-        self.__cab_type = cab_type
-
-    def get_cab_number(self):
-        return self.__cab_number
-
-    def get_cab_type(self):
-        return self.__cab_type
-
-
-# ==========================================================
-# ABSTRACTION
-# Booking Interface
-# ==========================================================
+# ================= ABSTRACTION =================
 
 class Booking(ABC):
 
@@ -104,168 +28,83 @@ class Booking(ABC):
         pass
 
 
-# ==========================================================
-# POLYMORPHISM
-# CabBooking overrides booking_details()
-# ==========================================================
+# ================= INHERITANCE =================
 
 class CabBooking(Booking):
 
-    def __init__(
-            self,
-            booking_id,
-            rider,
-            driver,
-            cab,
-            pickup,
-            destination,
-            distance):
+    # Constructor
+    def __init__(self, booking_id, customer, pickup, destination, cab_type):
 
-        # COMPOSITION
-        # Booking HAS Rider, Driver and Cab objects
-
+        # Encapsulation (Private Variables)
         self.__booking_id = booking_id
-        self.__rider = rider
-        self.__driver = driver
-        self.__cab = cab
-
+        self.__customer = customer
         self.__pickup = pickup
         self.__destination = destination
-        self.__distance = distance
+        self.__cab_type = cab_type
 
-        self.__fare = self.calculate_fare()
+    # Getter Methods
+    def get_booking_id(self):
+        return self.__booking_id
 
-    # ======================================================
-    # ENCAPSULATION
-    # ======================================================
+    def get_customer(self):
+        return self.__customer
 
-    def calculate_fare(self):
+    def get_pickup(self):
+        return self.__pickup
 
-        if self.__cab.get_cab_type() == "Mini":
-            rate = 12
+    def get_destination(self):
+        return self.__destination
 
-        elif self.__cab.get_cab_type() == "Sedan":
-            rate = 18
+    def get_cab_type(self):
+        return self.__cab_type
 
-        else:
-            rate = 25
-
-        return rate * self.__distance
-
-    # ======================================================
-    # POLYMORPHISM
-    # ======================================================
-
+    # Polymorphism (Method Overriding)
     def booking_details(self):
 
         return {
 
             "Booking ID": self.__booking_id,
-
-            "Rider": self.__rider.display(),
-
-            "Driver": self.__driver.display(),
-
-            "Cab": {
-
-                "Cab Number": self.__cab.get_cab_number(),
-
-                "Cab Type": self.__cab.get_cab_type()
-
-            },
-
+            "Customer": self.__customer,
             "Pickup": self.__pickup,
-
             "Destination": self.__destination,
+            "Cab Type": self.__cab_type
 
-            "Distance": self.__distance,
-
-            "Fare": self.__fare
         }
 
 
-# ==========================================================
-# COMPOSITION
-# Bank-like manager class for Cab Bookings
-# ==========================================================
+# ================= MANAGER CLASS =================
 
-class CabBookingManager:
+class BookingManager:
 
     def __init__(self):
-
         self.bookings = load_data()
 
-    # ======================================================
-    # CRUD - CREATE
-    # ======================================================
+    # ============ CREATE ============
 
     def create_booking(self):
 
         booking_id = input("Booking ID : ")
 
         for booking in self.bookings:
-
             if booking["Booking ID"] == booking_id:
                 print("Booking ID already exists.")
                 return
 
-        rider_name = input("Rider Name : ")
-
-        rider = Rider(
-            "R101",
-            rider_name
-        )
-
-        driver_name = input("Driver Name : ")
-
-        cab_number = input("Cab Number : ")
-
-        cab_type = input(
-            "Cab Type (Mini/Sedan/SUV): "
-        )
-
-        driver = Driver(
-            "D101",
-            driver_name,
-            cab_number
-        )
-
-        cab = Cab(
-            cab_number,
-            cab_type
-        )
+        customer = input("Customer Name : ")
 
         pickup = input("Pickup Location : ")
 
         destination = input("Destination : ")
 
-        try:
-
-            distance = float(
-                input("Distance (KM): ")
-            )
-
-        except ValueError:
-
-            print("Invalid distance.")
-
-            return
+        cab_type = input("Cab Type (Mini/Sedan/SUV): ")
 
         booking = CabBooking(
 
             booking_id,
-
-            rider,
-
-            driver,
-
-            cab,
-
+            customer,
             pickup,
-
             destination,
-
-            distance
+            cab_type
 
         )
 
@@ -275,4 +114,23 @@ class CabBookingManager:
 
         save_data(self.bookings)
 
-        print("\nBooking Created Successfully!")
+        print("\nCab Booked Successfully!")
+
+    # ============ READ ============
+
+    def view_bookings(self):
+
+        if not self.bookings:
+            print("\nNo Bookings Found.")
+            return
+
+        print("\n========= BOOKINGS =========\n")
+
+        for booking in self.bookings:
+
+            print(f"Booking ID : {booking['Booking ID']}")
+            print(f"Customer   : {booking['Customer']}")
+            print(f"Pickup     : {booking['Pickup']}")
+            print(f"Destination: {booking['Destination']}")
+            print(f"Cab Type   : {booking['Cab Type']}")
+            print("-" * 35)
