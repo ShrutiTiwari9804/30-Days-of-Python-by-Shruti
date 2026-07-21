@@ -4,5 +4,12 @@
         "Customer": "shruti",
         "Movie": "interstellar",
         "Seats": 4
+    },
+    {
+        "Booking ID": "110",
+        "Customer": "shruti",
+        "Pickup": "germany",
+        "Destination": "london",
+        "Cab Type": "sedan"
     }
 ]
