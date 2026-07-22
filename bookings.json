@@ -11,5 +11,12 @@
         "Pickup": "germany",
         "Destination": "london",
         "Cab Type": "sedan"
+    },
+    {
+        "Booking ID": "12",
+        "Customer": "shruti",
+        "Pickup": "london",
+        "Destination": "edinburgh",
+        "Cab Type": "sedan"
     }
 ]

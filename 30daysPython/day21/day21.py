@@ -127,7 +127,7 @@ class BookingManager:
         for booking in self.bookings:
 
             if booking["Booking ID"] == booking_id:
-
+                print(booking)
                 print("\nBooking Found\n")
                 print(f"Booking ID : {booking['Booking ID']}")
                 print(f"Customer   : {booking['Customer']}")
