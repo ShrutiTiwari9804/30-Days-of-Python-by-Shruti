@@ -87,6 +87,70 @@ def html():
     return "<h1>Hello</h1>"
 
 
+# CUSTOM RESPONSE CLASSES- REDIRECT
 
+from fastapi.responses import RedirectResponse
+
+@app.get("/google")
+def redirect():
+    return RedirectResponse("https://google.com")
+
+# BACKGROUND TASKS
+
+from fastapi import BackgroundTasks
+
+def send_email():
+    print("Email Sent")
+
+@app.get("/email")
+def email(background_tasks: BackgroundTasks):
+    background_tasks.add_task(send_email)
+    return {"message":"Sending Email"}
+
+# MIDDLEWARE
+
+from fastapi import Request
+
+@app.middleware("http")
+async def middleware(request: Request, call_next):
+
+    print("Before Request")
+
+    response = await call_next(request)
+
+    print("After Request")
+
+    return response
+
+
+
+# CORS
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
+
+
+# ENVIRONMENT VARIABLES
+
+
+pip install python-dotenv
+
+
+DATABASE_URL=sqlite:///test.db
+SECRET_KEY=mysecret
+
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+print(os.getenv("DATABASE_URL"))
 
 
