@@ -148,3 +148,54 @@ def generate():
     return {
         "id": str(uuid.uuid4())
     }
+
+
+# Custom Headers
+
+
+from fastapi import FastAPI, Response
+
+app = FastAPI()
+
+
+@app.get("/")
+def home(response: Response):
+
+    response.headers["Developer"] = "Shruti"
+
+    return {"message": "Header Added"}
+
+
+# Enum Validation
+
+
+from enum import Enum
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+class Department(str, Enum):
+    IT = "IT"
+    HR = "HR"
+    SALES = "Sales"
+
+
+@app.get("/{dept}")
+def department(dept: Department):
+    return {"Department": dept}
+
+# UUID Path Parameter
+
+
+from uuid import UUID
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get("/{user_id}")
+def user(user_id: UUID):
+    return {
+        "UUID": user_id
+    }
