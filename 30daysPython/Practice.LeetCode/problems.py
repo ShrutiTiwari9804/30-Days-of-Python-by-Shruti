@@ -72,3 +72,20 @@ class Solution(object):
                     
             num = num // 10
         return count 
+
+
+
+#finding the kth factor
+
+class Solution(object):
+    def kthFactor(self, n, k):
+        
+        
+        result = []
+        for i in range (1 , n+1):
+            if n % i == 0:
+                result.append(i)
+        if len(result) < k:
+            return -1
+        
+        return result[k-1]
