@@ -89,3 +89,24 @@ class Solution(object):
             return -1
         
         return result[k-1]
+
+
+# Self Dividing Numbers
+
+class Solution(object):
+    def checkPerfectNumber(self, num):
+        if num <= 1:
+            return False
+
+
+        addition = 1
+
+        for i in range (2, int(num ** 0.5) + 1):
+
+            if num % i == 0:
+                addition += i
+
+                if i != num // i:
+                    addition += num // i
+        
+        return addition == num
