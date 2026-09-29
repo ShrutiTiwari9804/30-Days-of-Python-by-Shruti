@@ -122,3 +122,18 @@ class Solution(object):
     def fib(self, n):
         answer = self.func(n)
         return answer
+
+# Power of two
+class Solution(object):
+    def isPowerOfTwo(self, n):
+        if n<=0:
+            return False
+
+        while n % 2 == 0 :
+            n = n // 2
+            
+
+        if n == 1:
+            return True
+            
+        return False
