@@ -137,3 +137,44 @@ class Solution(object):
             return True
             
         return False
+
+
+
+# Pow(x,n)
+
+class Solution(object):
+    def myPow(self, x, n):
+        
+        
+
+        if n == 0 :
+            return 1
+        
+
+        if n < 0:
+            return 1 / self.myPow(x, -n)
+
+        half = self.myPow(x, n//2)
+
+        if n>0 and n%2 == 0:
+            return  half * half
+
+        if n>0 and n%2==1:
+            return  x * half * half
+
+
+# Merger Sorted Array
+class Solution(object):
+    def merge(self, nums1, m, nums2, n):
+        i=m-1
+        j=n-1
+        k=m+n-1
+        while j >= 0: 
+            if nums1[i] > nums2[j] and i>=0:
+                nums1[k]=nums1[i]
+                i -= 1
+                k -= 1
+            else:
+                nums1[k] = nums2[j]
+                j -= 1
+                k -= 1
