@@ -231,3 +231,33 @@ class Solution(object):
         reverse (nums,n-k,n-1)
         reverse (nums,0,n-k-1)
         reverse (nums,0, n-1)
+
+
+
+# Leetcode 283
+
+class Solution(object):
+    def moveZeroes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: None Do not return anything, modify nums in-place instead.
+        """
+        if len(nums) == 1 :
+            return
+        
+        i = 0
+        while i < len(nums) :
+            if nums[i] == 0 :
+                break
+            i += 1
+
+        if i == len(nums):
+            return
+        j = i + 1   
+
+        while j < len(nums):
+            if nums[j] != 0:
+                nums[i] , nums[j] = nums[j], nums[i]
+
+                i += 1
+            j += 1
